@@ -8,9 +8,9 @@ import { Compass, Eye, Heart, Award, Linkedin, Twitter } from "lucide-react";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Hope Africa Foundation" },
-      { name: "description", content: "Our story, mission and the people behind Hope Africa Foundation." },
-      { property: "og:title", content: "About Hope Africa Foundation" },
+      { title: "About — Al-Abdul Trust Charity Organisation" },
+      { name: "description", content: "Our story, mission and the people behind Al-Abdul Trust Charity Organisation." },
+      { property: "og:title", content: "About Al-Abdul Trust Charity Organisation" },
       { property: "og:description", content: "A movement of compassion since 2009." },
     ],
   }),
@@ -49,7 +49,7 @@ function About() {
           <div>
             <h2 className="text-4xl font-bold text-primary">From a single meal to a movement</h2>
             <p className="mt-4 text-muted-foreground leading-relaxed">
-              Hope Africa Foundation began with one mother handing out meals after school in a Lagos suburb. Sixteen years later we operate in 14 countries — but our principle hasn't changed: meet people where they are, with what they need, and treat them like family.
+              Al-Abdul Trust Charity Organisation began with one mother handing out meals after school in a Lagos suburb. Sixteen years later we operate in 14 countries — but our principle hasn't changed: meet people where they are, with what they need, and treat them like family.
             </p>
             <p className="mt-4 text-muted-foreground leading-relaxed">
               We focus on six pillars: food security, education, healthcare, clean water, women's empowerment, and emergency relief. Every dollar is tracked. Every program is co-designed with the communities we serve.
@@ -92,7 +92,7 @@ function About() {
             <p className="text-sm uppercase tracking-[0.25em] text-warm font-semibold">Founder's message</p>
             <h2 className="mt-2 text-4xl font-bold text-primary">"Compassion is the bridge between despair and possibility."</h2>
             <p className="mt-6 text-muted-foreground leading-relaxed">
-              When I started Hope Africa, I had no plan, no funding — just a refusal to look away. Today, when I see a child confidently reading her first book or a mother starting her own business, I'm reminded that change is built one person at a time. Thank you for walking with us.
+              When I started Al-Abdul Trust, I had no plan, no funding — just a refusal to look away. Today, when I see a child confidently reading her first book or a mother starting her own business, I'm reminded that change is built one person at a time. Thank you for walking with us.
             </p>
             <p className="mt-4 font-display text-lg text-primary">— Dr. Aisha Bello, Founder &amp; CEO</p>
           </div>

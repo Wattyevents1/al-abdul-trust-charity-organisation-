@@ -15,9 +15,9 @@ import com from "@/assets/cause-community.jpg";
 export const Route = createFileRoute("/blog")({
   head: () => ({
     meta: [
-      { title: "Blog & News — Hope Africa Foundation" },
+      { title: "Blog & News — Al-Abdul Trust Charity Organisation" },
       { name: "description", content: "Stories from the field, project updates, and reflections on humanitarian work." },
-      { property: "og:title", content: "Hope Africa Blog" },
+      { property: "og:title", content: "Al-Abdul Trust Blog" },
       { property: "og:description", content: "Voices from the communities we serve." },
     ],
   }),
@@ -25,7 +25,7 @@ export const Route = createFileRoute("/blog")({
 });
 
 const posts = [
-  { id: 1, title: "How a single well changed Loiyangalani forever", category: "Water", img: wat, date: "Mar 12, 2026", excerpt: "When Hope Africa drilled its 300th well last month, it didn't just bring water — it rewrote a generation's future." },
+  { id: 1, title: "How a single well changed Loiyangalani forever", category: "Water", img: wat, date: "Mar 12, 2026", excerpt: "When Al-Abdul Trust drilled its 300th well last month, it didn't just bring water — it rewrote a generation's future." },
   { id: 2, title: "Inside our girls' scholarship program", category: "Education", img: edu, date: "Mar 04, 2026", excerpt: "2,500 girls are now in school thanks to donors like you. Here's what's next." },
   { id: 3, title: "Field notes: Mobile clinics in Sudan", category: "Healthcare", img: med, date: "Feb 26, 2026", excerpt: "A week with our medical team responding to displaced families in the Darfur corridor." },
   { id: 4, title: "Women who started 100 businesses", category: "Empowerment", img: wom, date: "Feb 18, 2026", excerpt: "How microloans of just $200 are creating ripple effects across rural Senegal." },

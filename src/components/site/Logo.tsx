@@ -16,7 +16,7 @@ export function Logo({ light = false }: { light?: boolean }) {
             light ? "text-white" : "text-foreground"
           }`}
         >
-          Hope Africa
+          Al-Abdul Trust
         </span>
         <span
           className={`text-[10px] uppercase tracking-[0.2em] ${

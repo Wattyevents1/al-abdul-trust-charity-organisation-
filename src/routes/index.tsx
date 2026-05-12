@@ -12,9 +12,9 @@ import { Input } from "@/components/ui/input";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Hope Africa Foundation — Changing Lives Through Compassion" },
-      { name: "description", content: "Join Hope Africa Foundation in delivering food, education, healthcare and clean water across Africa. Donate or volunteer today." },
-      { property: "og:title", content: "Hope Africa Foundation" },
+      { title: "Al-Abdul Trust Charity Organisation — Changing Lives Through Compassion" },
+      { name: "description", content: "Join Al-Abdul Trust Charity Organisation in delivering food, education, healthcare and clean water across Africa. Donate or volunteer today." },
+      { property: "og:title", content: "Al-Abdul Trust Charity Organisation" },
       { property: "og:description", content: "Changing lives through compassion and action." },
     ],
   }),
@@ -29,7 +29,7 @@ const stats = [
 ];
 
 const testimonials = [
-  { name: "Amara Okonkwo", role: "Mother, Lagos", quote: "Hope Africa rebuilt our school after the floods. My children have hope again.", rating: 5 },
+  { name: "Amara Okonkwo", role: "Mother, Lagos", quote: "Al-Abdul Trust rebuilt our school after the floods. My children have hope again.", rating: 5 },
   { name: "James Mwangi", role: "Teacher, Nairobi", quote: "The clean water project changed our entire village. Sickness has dropped dramatically.", rating: 5 },
   { name: "Fatima Diallo", role: "Volunteer, Dakar", quote: "Volunteering here showed me the power of small acts done with great love.", rating: 5 },
 ];

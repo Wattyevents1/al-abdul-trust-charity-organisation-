@@ -15,9 +15,9 @@ import { toast } from "sonner";
 export const Route = createFileRoute("/volunteer")({
   head: () => ({
     meta: [
-      { title: "Volunteer — Hope Africa Foundation" },
+      { title: "Volunteer — Al-Abdul Trust Charity Organisation" },
       { name: "description", content: "Join our global network of 6,200+ volunteers and help change lives across Africa." },
-      { property: "og:title", content: "Volunteer with Hope Africa" },
+      { property: "og:title", content: "Volunteer with Al-Abdul Trust" },
       { property: "og:description", content: "Give your time. Change a life." },
     ],
   }),
@@ -70,7 +70,7 @@ function VolunteerPage() {
           <div className="space-y-8">
             <Card className="p-7 bg-secondary/30 border-warm/30">
               <Quote className="h-8 w-8 text-warm" />
-              <p className="mt-3 text-lg text-foreground/90 italic">"Volunteering with Hope Africa was the most meaningful month of my life. I came to teach English; I left with a new family."</p>
+              <p className="mt-3 text-lg text-foreground/90 italic">"Volunteering with Al-Abdul Trust was the most meaningful month of my life. I came to teach English; I left with a new family."</p>
               <p className="mt-3 font-semibold text-primary">— Lucia, volunteer from Spain</p>
             </Card>
             <Card className="p-7">

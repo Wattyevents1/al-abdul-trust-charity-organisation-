@@ -9,9 +9,9 @@ import { useEffect, useState } from "react";
 export const Route = createFileRoute("/events")({
   head: () => ({
     meta: [
-      { title: "Events — Hope Africa Foundation" },
+      { title: "Events — Al-Abdul Trust Charity Organisation" },
       { name: "description", content: "Charity galas, fundraisers, awareness walks and community days you can join." },
-      { property: "og:title", content: "Hope Africa Events" },
+      { property: "og:title", content: "Al-Abdul Trust Events" },
       { property: "og:description", content: "Find an event near you." },
     ],
   }),
