@@ -16,9 +16,9 @@ import f9 from "@/assets/hero-children.jpg";
 export const Route = createFileRoute("/gallery")({
   head: () => ({
     meta: [
-      { title: "Gallery — Hope Africa Foundation" },
+      { title: "Gallery — Al-Abdul Trust Charity Organisation" },
       { name: "description", content: "Photos and stories from our programs across Africa." },
-      { property: "og:title", content: "Hope Africa Gallery" },
+      { property: "og:title", content: "Al-Abdul Trust Gallery" },
       { property: "og:description", content: "See the impact, in pictures." },
     ],
   }),

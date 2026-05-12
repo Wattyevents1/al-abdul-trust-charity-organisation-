@@ -13,9 +13,9 @@ import { toast } from "sonner";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — Hope Africa Foundation" },
+      { title: "Contact — Al-Abdul Trust Charity Organisation" },
       { name: "description", content: "Reach our team for partnerships, press, donations or general questions." },
-      { property: "og:title", content: "Contact Hope Africa" },
+      { property: "og:title", content: "Contact Al-Abdul Trust" },
       { property: "og:description", content: "We'd love to hear from you." },
     ],
   }),

@@ -12,9 +12,9 @@ import { useState } from "react";
 export const Route = createFileRoute("/causes")({
   head: () => ({
     meta: [
-      { title: "Causes & Donate — Hope Africa Foundation" },
+      { title: "Causes & Donate — Al-Abdul Trust Charity Organisation" },
       { name: "description", content: "Support food, education, healthcare, water, women, and community programs across Africa." },
-      { property: "og:title", content: "Donate to Hope Africa" },
+      { property: "og:title", content: "Donate to Al-Abdul Trust" },
       { property: "og:description", content: "Pick a cause and make a difference today." },
     ],
   }),
