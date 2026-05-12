@@ -25,7 +25,7 @@ export const Route = createFileRoute("/contact")({
 const faqs = [
   { q: "Is my donation tax-deductible?", a: "Yes — we issue a tax receipt by email immediately after every donation." },
   { q: "How do I cancel a recurring donation?", a: "From your donor portal, or just reply to any receipt email and we'll handle it." },
-  { q: "Can my company partner with you?", a: "Absolutely. Email partners@hopeafrica.org and we'll set up an intro call." },
+  { q: "Can my company partner with you?", a: "Absolutely. Email alabdultrustcharityorg@gmail.com and we'll set up an intro call." },
   { q: "Do you accept in-kind donations?", a: "Yes, in selected categories. Please contact us first to coordinate logistics." },
 ];
 
@@ -37,10 +37,9 @@ function Contact() {
         <div className="container-narrow grid lg:grid-cols-3 gap-8">
           <div className="space-y-4">
             {[
-              { icon: Mail, title: "Email", text: "hello@hopeafrica.org" },
-              { icon: Phone, title: "Phone", text: "+254 700 123 456" },
-              { icon: MapPin, title: "HQ", text: "Plot 24, Hope Street, Nairobi, Kenya" },
-              { icon: MessageCircle, title: "Live chat", text: "Mon–Fri, 9am–6pm EAT" },
+              { icon: Mail, title: "Email", text: "alabdultrustcharityorg@gmail.com" },
+              { icon: Phone, title: "Phone", text: "+256 76 088 6599" },
+              { icon: MessageCircle, title: "WhatsApp", text: "Chat with us anytime" },
             ].map(c => (
               <Card key={c.title} className="p-5 flex items-start gap-4">
                 <div className="h-10 w-10 rounded-xl flex items-center justify-center text-white shrink-0" style={{ background: "var(--gradient-warm)" }}>

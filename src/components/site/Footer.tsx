@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Facebook, Instagram, Twitter, Youtube, Mail, Phone, MapPin } from "lucide-react";
+import { Facebook, Instagram, MessageCircle, Mail, Phone } from "lucide-react";
 import { Logo } from "./Logo";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -14,8 +14,12 @@ export function Footer() {
             A humanitarian movement bringing hope, dignity and opportunity to communities across Africa.
           </p>
           <div className="flex gap-3 pt-2">
-            {[Facebook, Twitter, Instagram, Youtube].map((Icon, i) => (
-              <a key={i} href="#" className="h-9 w-9 rounded-full bg-white/10 hover:bg-gold hover:text-gold-foreground transition flex items-center justify-center">
+            {[
+              { Icon: Facebook, href: "https://www.facebook.com/share/14bxSQNEbCT/?mibextid=wwXIfr", label: "Facebook" },
+              { Icon: Instagram, href: "https://www.instagram.com/al_abdul_trust_charity_org?igsh=MTV6MzIyaTJicGRyNg%3D%3D&utm_source=qr", label: "Instagram" },
+              { Icon: MessageCircle, href: "https://wa.me/message/DWXG46HBOV6CL1", label: "WhatsApp" },
+            ].map(({ Icon, href, label }) => (
+              <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="h-9 w-9 rounded-full bg-white/10 hover:bg-gold hover:text-gold-foreground transition flex items-center justify-center">
                 <Icon className="h-4 w-4" />
               </a>
             ))}
@@ -32,9 +36,9 @@ export function Footer() {
         <div>
           <h4 className="font-display text-lg mb-4 text-white">Contact</h4>
           <ul className="space-y-3 text-sm text-primary-foreground/70">
-            <li className="flex gap-2"><MapPin className="h-4 w-4 mt-0.5 shrink-0" />Plot 24, Hope Street, Nairobi, Kenya</li>
-            <li className="flex gap-2"><Phone className="h-4 w-4 mt-0.5 shrink-0" />+254 700 123 456</li>
-            <li className="flex gap-2"><Mail className="h-4 w-4 mt-0.5 shrink-0" />hello@hopeafrica.org</li>
+            <li className="flex gap-2"><Phone className="h-4 w-4 mt-0.5 shrink-0" /><a href="tel:+256760886599" className="hover:text-gold transition">+256 76 088 6599</a></li>
+            <li className="flex gap-2"><Mail className="h-4 w-4 mt-0.5 shrink-0" /><a href="mailto:alabdultrustcharityorg@gmail.com" className="hover:text-gold transition break-all">alabdultrustcharityorg@gmail.com</a></li>
+            <li className="flex gap-2"><MessageCircle className="h-4 w-4 mt-0.5 shrink-0" /><a href="https://wa.me/message/DWXG46HBOV6CL1" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition">WhatsApp us</a></li>
           </ul>
         </div>
         <div>
