@@ -1,18 +1,15 @@
 import { Link } from "@tanstack/react-router";
-import { Heart } from "lucide-react";
+import logoImg from "@/assets/logo.png";
 
 export function Logo({ light = false }: { light?: boolean }) {
   return (
     <Link to="/" className="flex items-center gap-2 group">
-      <span
-        className="relative flex h-10 w-10 items-center justify-center rounded-full"
-        style={{ background: "var(--gradient-warm)" }}
-      >
-        <Heart className="h-5 w-5 fill-white text-white" />
+      <span className="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-full bg-white ring-2 ring-gold/40 shadow-sm">
+        <img src={logoImg} alt="Al-Abdul Trust Charity Organisation logo" className="h-full w-full object-contain" />
       </span>
       <span className="flex flex-col leading-none">
         <span
-          className={`font-display text-lg font-bold tracking-tight ${
+          className={`font-display text-base font-bold tracking-tight ${
             light ? "text-white" : "text-foreground"
           }`}
         >
@@ -23,7 +20,7 @@ export function Logo({ light = false }: { light?: boolean }) {
             light ? "text-white/70" : "text-muted-foreground"
           }`}
         >
-          Foundation
+          Serving Humanity
         </span>
       </span>
     </Link>
