@@ -30,7 +30,7 @@ function CausesPage() {
 
   return (
     <SiteLayout>
-      <PageHero eyebrow="Where help meets hope" title="Choose a cause to support" subtitle="100% of every donation is tracked and reported. Choose where your gift makes the biggest impact." />
+      <PageHero eyebrow="Our projects" title="Where your support changes lives" subtitle="Nine focused programmes — from clean water and orphan care to mosques, schools and emergency relief. Every donation is tracked and reported." />
 
       <section className="py-20">
         <div className="container-narrow grid lg:grid-cols-3 gap-10">
@@ -86,7 +86,8 @@ function CausesPage() {
                   </div>
                   <div className="p-6">
                     <h3 className="font-display text-xl font-bold text-primary">{c.title}</h3>
-                    <p className="mt-2 text-sm text-muted-foreground line-clamp-2">{c.description}</p>
+                    <p className="mt-2 text-sm font-medium text-foreground/80">{c.description}</p>
+                    <p className="mt-2 text-sm text-muted-foreground">{c.details}</p>
                     <Progress value={pct} className="mt-4 h-2" />
                     <div className="mt-2 flex justify-between text-xs text-muted-foreground">
                       <span><strong className="text-primary">${c.raised.toLocaleString()}</strong> raised</span>
