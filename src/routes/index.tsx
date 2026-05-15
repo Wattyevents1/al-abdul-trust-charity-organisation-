@@ -3,10 +3,9 @@ import heroImg from "@/assets/hero-children.jpg";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { Button } from "@/components/ui/button";
 import { Counter } from "@/components/site/Counter";
-import { causes } from "@/data/causes";
+import { causes, CURRENCY_SYMBOL } from "@/data/causes";
 import { ArrowRight, Heart, Users, Utensils, Globe, Quote, Star } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
 import { Input } from "@/components/ui/input";
 
 export const Route = createFileRoute("/")({
@@ -106,7 +105,7 @@ function HomePage() {
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {causes.slice(0, 6).map((c) => {
-              const pct = Math.round((c.raised / c.goal) * 100);
+              const firstTier = c.tiers[0];
               return (
                 <Card key={c.slug} className="group overflow-hidden p-0 border-border/60 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-elegant)] transition-all duration-300 hover:-translate-y-1">
                   <div className="relative aspect-[4/3] overflow-hidden">
@@ -116,10 +115,12 @@ function HomePage() {
                   <div className="p-6">
                     <h3 className="font-display text-xl font-bold text-primary mb-2">{c.title}</h3>
                     <p className="text-sm text-muted-foreground line-clamp-2 mb-4">{c.description}</p>
-                    <Progress value={pct} className="h-2" />
-                    <div className="mt-3 flex justify-between text-sm">
-                      <span className="font-semibold text-primary">${c.raised.toLocaleString()} raised</span>
-                      <span className="text-muted-foreground">Goal ${c.goal.toLocaleString()}</span>
+                    <div className="mt-3 rounded-lg bg-secondary/60 px-3 py-2 text-sm">
+                      {firstTier.amount !== null ? (
+                        <span className="font-semibold text-primary">From {CURRENCY_SYMBOL}{firstTier.amount} · {firstTier.label}</span>
+                      ) : (
+                        <span className="font-semibold text-primary">{firstTier.label}</span>
+                      )}
                     </div>
                     <Button asChild className="mt-5 w-full rounded-full" style={{ background: "var(--gradient-warm)", color: "var(--warm-foreground)" }}>
                       <Link to="/causes">Donate</Link>
