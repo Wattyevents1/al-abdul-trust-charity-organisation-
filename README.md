@@ -1,34 +1,61 @@
 # Al-Abdul Trust Charity Organisation
 
-A Vue 3 + Vite powered website for the Al-Abdul Trust Charity Organisation.
+A modern, responsive website for Al-Abdul Trust Charity Organisation built with Vue 3 and Vite.
 
-## Getting Started
+## Features
+
+- ✨ Modern, responsive design
+- 🎨 Beautiful gradient UI with smooth animations
+- 📱 Mobile-friendly layout
+- ⚡ Built with Vite for lightning-fast development and optimized builds
+- 🚀 Deployed on Vercel
+
+## Project Structure
+
+```
+.
+├── src/
+│   ├── main.js           # Application entry point
+│   ├── App.vue           # Root Vue component
+├── index.html            # HTML template
+├── vite.config.js        # Vite configuration
+├── vercel.json           # Vercel deployment config
+└── package.json          # Project dependencies
+```
+
+## Local Development
 
 ### Prerequisites
-- Node.js (v14 or higher)
+- Node.js 16+ 
 - npm or yarn
 
-### Installation
+### Setup
 
+1. Install dependencies:
 ```bash
-# Install dependencies
 npm install
+```
 
-# Start development server
+2. Start development server:
+```bash
 npm run dev
 ```
 
 The application will be available at `http://localhost:5173`
 
-### Build for Production
+## Build
+
+To create a production build:
 
 ```bash
 npm run build
 ```
 
-The production-ready files will be in the `dist/` folder.
+This generates optimized files in the `dist/` directory.
 
-### Preview Production Build
+## Preview Build
+
+To preview the production build locally:
 
 ```bash
 npm run preview
@@ -36,52 +63,32 @@ npm run preview
 
 ## Deployment on Vercel
 
-### Method 1: Automatic Deployment
+This project is configured for seamless deployment on Vercel.
 
-1. Go to [vercel.com](https://vercel.com)
-2. Click "New Project"
-3. Import your GitHub repository
-4. Vercel will auto-detect the configuration
-5. Click "Deploy"
+### Deploy Now
 
-### Method 2: Vercel CLI
+1. Push your code to GitHub
+2. Go to [vercel.com](https://vercel.com)
+3. Click "Import" and select this repository
+4. Vercel will automatically detect Vite and deploy with optimal settings
+5. Your site will be live!
 
-```bash
-# Install Vercel CLI
-npm i -g vercel
+### Environment Variables
+If you need to add environment variables:
+1. Go to your Vercel project settings
+2. Navigate to "Environment Variables"
+3. Add your variables (e.g., `VITE_API_URL`)
 
-# Deploy
-vercel
-```
+## Live Site
 
-## Project Structure
+Visit the live site at: https://al-abdul-trust-charity-organisation.vercel.app
 
-```
-.
-├── src/
-│   ├── App.vue          # Root component
-│   └── main.js          # App entry point
-├── index.html           # HTML entry
-├── vite.config.js       # Vite configuration
-├── vercel.json          # Vercel deployment config
-├── package.json         # Dependencies
-└── README.md            # This file
-```
-
-## Technology Stack
+## Technologies Used
 
 - **Vue 3** - Progressive JavaScript framework
 - **Vite** - Next generation frontend build tool
-- **Vercel** - Serverless deployment platform
-
-## Features
-
-✨ Modern Vue 3 Composition API  
-⚡ Lightning-fast Vite build tool  
-📱 Fully responsive design  
-🎨 Beautiful gradient UI  
-🚀 Ready for Vercel deployment  
+- **CSS3** - Modern styling with gradients and animations
 
 ## License
 
-MIT License - Feel free to use this project for your charity organisation.
+© 2026 Al-Abdul Trust Charity Organisation. All rights reserved.
