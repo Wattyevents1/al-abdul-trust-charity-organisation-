@@ -92,9 +92,14 @@ function CausesPage() {
                       <span><strong className="text-primary">${c.raised.toLocaleString()}</strong> raised</span>
                       <span>{pct}% of ${c.goal.toLocaleString()}</span>
                     </div>
-                    <Button asChild className="mt-4 w-full rounded-full" style={{ background: "var(--gradient-warm)", color: "var(--warm-foreground)" }}>
-                      <Link to="/causes">Donate</Link>
-                    </Button>
+                    <div className="mt-4 grid grid-cols-2 gap-2">
+                      <Button asChild variant="outline" className="rounded-full">
+                        <Link to="/causes/$slug" params={{ slug: c.slug }}>Learn more</Link>
+                      </Button>
+                      <Button asChild className="rounded-full" style={{ background: "var(--gradient-warm)", color: "var(--warm-foreground)" }}>
+                        <Link to="/causes">Donate</Link>
+                      </Button>
+                    </div>
                   </div>
                 </Card>
               );
