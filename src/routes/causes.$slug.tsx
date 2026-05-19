@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ArrowLeft, Heart, Sparkles } from "lucide-react";
 
-export const Route = createFileRoute("/causes/")({
+export const Route = createFileRoute("/causes/$slug")({
   loader: ({ params }) => {
     const cause = causes.find((c) => c.slug === params.slug);
     if (!cause) throw notFound();

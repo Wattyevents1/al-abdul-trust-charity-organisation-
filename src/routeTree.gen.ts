@@ -17,7 +17,7 @@ import { Route as CausesRouteImport } from './routes/causes'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as CausesRouteImport } from './routes/causes.'
+import { Route as CausesSlugRouteImport } from './routes/causes.$slug'
 
 const VolunteerRoute = VolunteerRouteImport.update({
   id: '/volunteer',
@@ -59,9 +59,9 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CausesRoute = CausesRouteImport.update({
-  id: '/',
-  path: '/',
+const CausesSlugRoute = CausesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
   getParentRoute: () => CausesRoute,
 } as any)
 
@@ -74,17 +74,18 @@ export interface FileRoutesByFullPath {
   '/events': typeof EventsRoute
   '/gallery': typeof GalleryRoute
   '/volunteer': typeof VolunteerRoute
-  '/causes/': typeof CausesRoute
+  '/causes/$slug': typeof CausesSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/blog': typeof BlogRoute
+  '/causes': typeof CausesRouteWithChildren
   '/contact': typeof ContactRoute
   '/events': typeof EventsRoute
   '/gallery': typeof GalleryRoute
   '/volunteer': typeof VolunteerRoute
-  '/causes': typeof CausesRoute
+  '/causes/$slug': typeof CausesSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -96,7 +97,7 @@ export interface FileRoutesById {
   '/events': typeof EventsRoute
   '/gallery': typeof GalleryRoute
   '/volunteer': typeof VolunteerRoute
-  '/causes/': typeof CausesRoute
+  '/causes/$slug': typeof CausesSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -109,17 +110,18 @@ export interface FileRouteTypes {
     | '/events'
     | '/gallery'
     | '/volunteer'
-    | '/causes/'
+    | '/causes/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/blog'
+    | '/causes'
     | '/contact'
     | '/events'
     | '/gallery'
     | '/volunteer'
-    | '/causes'
+    | '/causes/$slug'
   id:
     | '__root__'
     | '/'
@@ -130,7 +132,7 @@ export interface FileRouteTypes {
     | '/events'
     | '/gallery'
     | '/volunteer'
-    | '/causes/'
+    | '/causes/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -202,22 +204,22 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/causes/': {
-      id: '/causes/'
-      path: '/'
-      fullPath: '/causes/'
-      preLoaderRoute: typeof CausesRouteImport
+    '/causes/$slug': {
+      id: '/causes/$slug'
+      path: '/$slug'
+      fullPath: '/causes/$slug'
+      preLoaderRoute: typeof CausesSlugRouteImport
       parentRoute: typeof CausesRoute
     }
   }
 }
 
 interface CausesRouteChildren {
-  CausesRoute: typeof CausesRoute
+  CausesSlugRoute: typeof CausesSlugRoute
 }
 
 const CausesRouteChildren: CausesRouteChildren = {
-  CausesRoute: CausesRoute,
+  CausesSlugRoute: CausesSlugRoute,
 }
 
 const CausesRouteWithChildren =
