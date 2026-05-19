@@ -86,7 +86,7 @@ function CausesPage() {
                   </div>
                   <div className="p-6">
                     <h3 className="font-display text-xl font-bold text-primary">{c.title}</h3>
-                    <p className="mt-2 text-sm text-muted-foreground line-clamp-2">{c.description}</p>
+                    <p className="mt-2 text-sm text-muted-foreground">{c.description}</p>
                     <Progress value={pct} className="mt-4 h-2" />
                     <div className="mt-2 flex justify-between text-xs text-muted-foreground">
                       <span><strong className="text-primary">${c.raised.toLocaleString()}</strong> raised</span>
