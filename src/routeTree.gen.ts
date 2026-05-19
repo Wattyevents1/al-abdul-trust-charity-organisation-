@@ -17,6 +17,7 @@ import { Route as CausesRouteImport } from './routes/causes'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CausesRouteImport } from './routes/causes.'
 
 const VolunteerRoute = VolunteerRouteImport.update({
   id: '/volunteer',
@@ -58,37 +59,44 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CausesRoute = CausesRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => CausesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/blog': typeof BlogRoute
-  '/causes': typeof CausesRoute
+  '/causes': typeof CausesRouteWithChildren
   '/contact': typeof ContactRoute
   '/events': typeof EventsRoute
   '/gallery': typeof GalleryRoute
   '/volunteer': typeof VolunteerRoute
+  '/causes/': typeof CausesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/blog': typeof BlogRoute
-  '/causes': typeof CausesRoute
   '/contact': typeof ContactRoute
   '/events': typeof EventsRoute
   '/gallery': typeof GalleryRoute
   '/volunteer': typeof VolunteerRoute
+  '/causes': typeof CausesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/blog': typeof BlogRoute
-  '/causes': typeof CausesRoute
+  '/causes': typeof CausesRouteWithChildren
   '/contact': typeof ContactRoute
   '/events': typeof EventsRoute
   '/gallery': typeof GalleryRoute
   '/volunteer': typeof VolunteerRoute
+  '/causes/': typeof CausesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -101,16 +109,17 @@ export interface FileRouteTypes {
     | '/events'
     | '/gallery'
     | '/volunteer'
+    | '/causes/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/blog'
-    | '/causes'
     | '/contact'
     | '/events'
     | '/gallery'
     | '/volunteer'
+    | '/causes'
   id:
     | '__root__'
     | '/'
@@ -121,13 +130,14 @@ export interface FileRouteTypes {
     | '/events'
     | '/gallery'
     | '/volunteer'
+    | '/causes/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   BlogRoute: typeof BlogRoute
-  CausesRoute: typeof CausesRoute
+  CausesRoute: typeof CausesRouteWithChildren
   ContactRoute: typeof ContactRoute
   EventsRoute: typeof EventsRoute
   GalleryRoute: typeof GalleryRoute
@@ -192,14 +202,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/causes/': {
+      id: '/causes/'
+      path: '/'
+      fullPath: '/causes/'
+      preLoaderRoute: typeof CausesRouteImport
+      parentRoute: typeof CausesRoute
+    }
   }
 }
+
+interface CausesRouteChildren {
+  CausesRoute: typeof CausesRoute
+}
+
+const CausesRouteChildren: CausesRouteChildren = {
+  CausesRoute: CausesRoute,
+}
+
+const CausesRouteWithChildren =
+  CausesRoute._addFileChildren(CausesRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   BlogRoute: BlogRoute,
-  CausesRoute: CausesRoute,
+  CausesRoute: CausesRouteWithChildren,
   ContactRoute: ContactRoute,
   EventsRoute: EventsRoute,
   GalleryRoute: GalleryRoute,
@@ -208,3 +236,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
