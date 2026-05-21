@@ -1,13 +1,13 @@
 import { createFileRoute, Link, notFound, useRouter } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
-import { causes } from "@/data/causes";
+import { causes, type Cause } from "@/data/causes";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ArrowLeft, Heart, Sparkles } from "lucide-react";
 
 export const Route = createFileRoute("/causes/$slug")({
-  loader: ({ params }) => {
+  loader: ({ params }: { params: { slug: string } }) => {
     const cause = causes.find((c) => c.slug === params.slug);
     if (!cause) throw notFound();
     return { cause };
@@ -49,7 +49,7 @@ export const Route = createFileRoute("/causes/$slug")({
 });
 
 function CauseDetailPage() {
-  const { cause } = Route.useLoaderData();
+  const { cause } = Route.useLoaderData() as { cause: Cause };
   const related = causes.filter((c) => c.slug !== cause.slug).slice(0, 3);
 
   return (
