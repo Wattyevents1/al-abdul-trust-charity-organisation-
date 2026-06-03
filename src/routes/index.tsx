@@ -97,11 +97,11 @@ function HomePage() {
         <div className="container-narrow">
           <div className="flex items-end justify-between flex-wrap gap-4 mb-12">
             <div>
-              <p className="text-sm uppercase tracking-[0.25em] text-warm font-semibold">Featured causes</p>
+              <p className="text-sm uppercase tracking-[0.25em] text-warm font-semibold">Featured projects</p>
               <h2 className="mt-2 text-4xl md:text-5xl font-bold text-primary max-w-xl">Where your donation makes a real difference</h2>
             </div>
             <Button asChild variant="link" className="text-primary">
-              <Link to="/causes">View all causes <ArrowRight className="ml-1 h-4 w-4" /></Link>
+              <Link to="/causes">View all projects <ArrowRight className="ml-1 h-4 w-4" /></Link>
             </Button>
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
