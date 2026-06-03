@@ -12,10 +12,10 @@ import { Input } from "@/components/ui/input";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Al-Abdul Trust Charity Organisation — Changing Lives Through Compassion" },
+      { title: "Al-Abdul Trust Charity Organisation — Changing Lives Through Service" },
       { name: "description", content: "Join Al-Abdul Trust Charity Organisation in delivering food, education, healthcare and clean water across Africa. Donate or volunteer today." },
       { property: "og:title", content: "Al-Abdul Trust Charity Organisation" },
-      { property: "og:description", content: "Changing lives through compassion and action." },
+      { property: "og:description", content: "Changing lives through service and action." },
     ],
   }),
   component: HomePage,
@@ -56,7 +56,7 @@ function HomePage() {
             </span>
             <h1 className="mt-6 text-5xl md:text-7xl font-bold leading-[1.05]">
               Changing Lives Through{" "}
-              <span className="text-gradient-warm">Compassion</span> and Action
+              <span className="text-gradient-warm">Service</span> and Action
             </h1>
             <p className="mt-6 text-lg md:text-xl text-white/85 max-w-2xl">
               We deliver food, education, healthcare and clean water to communities across Africa — and we'd love your help to reach the next thousand families.

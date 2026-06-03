@@ -11,14 +11,14 @@ export const Route = createFileRoute("/about")({
       { title: "About — Al-Abdul Trust Charity Organisation" },
       { name: "description", content: "Our story, mission and the people behind Al-Abdul Trust Charity Organisation." },
       { property: "og:title", content: "About Al-Abdul Trust Charity Organisation" },
-      { property: "og:description", content: "A movement of compassion since 2009." },
+      { property: "og:description", content: "A movement of service and trust since 2009." },
     ],
   }),
   component: About,
 });
 
 const values = [
-  { icon: Heart, title: "Compassion", text: "Every life we touch is treated with dignity and love." },
+  { icon: Heart, title: "Mercy", text: "Every life we touch is treated with dignity and love." },
   { icon: Eye, title: "Transparency", text: "Audited finances, public reports, full accountability." },
   { icon: Compass, title: "Sustainability", text: "We build solutions that empower communities long-term." },
   { icon: Award, title: "Excellence", text: "World-class standards in every program we deliver." },
@@ -42,7 +42,7 @@ const milestones = [
 function About() {
   return (
     <SiteLayout>
-      <PageHero eyebrow="Our Story" title="A movement built on compassion" subtitle="Since 2009 we've walked alongside communities across Africa, listening, building, and serving." />
+      <PageHero eyebrow="Our Story" title="A movement built on trust and service" subtitle="Since 2009 we've walked alongside communities across Africa, listening, building, and serving." />
 
       <section className="py-24">
         <div className="container-narrow grid md:grid-cols-2 gap-12 items-center">
@@ -90,7 +90,7 @@ function About() {
           </div>
           <div className="md:col-span-2">
             <p className="text-sm uppercase tracking-[0.25em] text-warm font-semibold">Founder's message</p>
-            <h2 className="mt-2 text-4xl font-bold text-primary">"Compassion is the bridge between despair and possibility."</h2>
+            <h2 className="mt-2 text-4xl font-bold text-primary">"Service is the bridge between despair and possibility."</h2>
             <p className="mt-6 text-muted-foreground leading-relaxed">
               When I started Al-Abdul Trust, I had no plan, no funding — just a refusal to look away. Today, when I see a child confidently reading her first book or a mother starting her own business, I'm reminded that change is built one person at a time. Thank you for walking with us.
             </p>
