@@ -15,6 +15,6 @@ export default defineConfig({
     },
   },
   tanstackStart: {
-    server: { entry: "server" },
+    server: { entry: "server", preset: "vercel" },
   },
 });
