@@ -8,9 +8,9 @@ import { Compass, Eye, Heart, Award, Linkedin, Twitter } from "lucide-react";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Al-Abdul Trust Charity Organisation" },
-      { name: "description", content: "Our story, mission and the people behind Al-Abdul Trust Charity Organisation." },
-      { property: "og:title", content: "About Al-Abdul Trust Charity Organisation" },
+      { title: "About — Al-Abdul Trust CHARITY ORGANISATION" },
+      { name: "description", content: "Our story, mission and the people behind Al-Abdul Trust CHARITY ORGANISATION." },
+      { property: "og:title", content: "About Al-Abdul Trust CHARITY ORGANISATION" },
       { property: "og:description", content: "A movement of service and trust since 2009." },
     ],
   }),
@@ -36,7 +36,7 @@ const milestones = [
   { year: "2013", title: "First clinic", text: "Opened our first mobile health clinic in rural Kenya." },
   { year: "2017", title: "100 villages", text: "Reached 100 communities across 6 African countries." },
   { year: "2021", title: "Clean water scale", text: "Built 250 wells, serving over 800,000 people." },
-  { year: "2025", title: "Global movement", text: "6,200+ volunteers worldwide, $40M+ raised for impact." },
+  { year: "2025", title: "Global movement", text: "40+ volunteers worldwide, $40M+ raised for impact." },
 ];
 
 function About() {
@@ -49,14 +49,14 @@ function About() {
           <div>
             <h2 className="text-4xl font-bold text-primary">From a single meal to a movement</h2>
             <p className="mt-4 text-muted-foreground leading-relaxed">
-              Al-Abdul Trust Charity Organisation began with one mother handing out meals after school in a Lagos suburb. Sixteen years later we operate in 14 countries — but our principle hasn't changed: meet people where they are, with what they need, and treat them like family.
+              Al-Abdul Trust CHARITY ORGANISATION began with one mother handing out meals after school in a Lagos suburb. Sixteen years later we operate in 14 countries — but our principle hasn't changed: meet people where they are, with what they need, and treat them like family.
             </p>
             <p className="mt-4 text-muted-foreground leading-relaxed">
               We focus on six pillars: food security, education, healthcare, clean water, women's empowerment, and emergency relief. Every dollar is tracked. Every program is co-designed with the communities we serve.
             </p>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            {[{n: 124500, l: "Children helped"}, {n: 380, l: "Communities"}, {n: 14, l: "Countries"}, {n: 16, l: "Years of impact"}].map(s => (
+            {[{n: 1200, l: "Children helped"}, {n: 180, l: "Communities"}, {n: 14, l: "Countries"}, {n: 16, l: "Years of impact"}].map(s => (
               <Card key={s.l} className="p-6 text-center">
                 <div className="font-display text-3xl font-bold text-warm"><Counter end={s.n} suffix={s.n > 1000 ? "+" : ""} /></div>
                 <p className="mt-1 text-sm text-muted-foreground">{s.l}</p>
