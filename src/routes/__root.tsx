@@ -82,9 +82,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
       { name: "twitter:title", content: "Al-Abdul Trust CHARITY ORGANISATION — Changing Lives Through Service" },
-      { name: "twitter:description", content: "Al-Abdul Trust CHARITY ORGANISATION is a humanitarian NGO bringing food, education, healthcare, clean water and hope to communities across Uganda." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/584c38c7-d03b-43a1-ba3f-f62421ae74bd/id-preview-ae86f6e8--2a1bedcd-3188-4730-af83-1396ca950cc7.lovable.app-1780846594662.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/584c38c7-d03b-43a1-ba3f-f62421ae74bd/id-preview-ae86f6e8--2a1bedcd-3188-4730-af83-1396ca950cc7.lovable.app-1780846594662.png" },
+      { name: "twitter:description", content: "Al-Abdul Trust CHARITY ORGANISATION is a humanitarian NGO bringing food, education, healthcare, clean water and hope to communities across Uganda." }
     ],
     links: [
       {
@@ -127,6 +125,27 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <nav className="border-b border-slate-700 bg-slate-900">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-8 py-4">
+          <Link to="/" className="text-xl font-bold text-white hover:text-slate-200">
+            Al-Abdul Trust
+          </Link>
+          <div className="flex gap-6">
+            <Link 
+              to="/" 
+              className="transition-colors text-slate-300 hover:text-white"
+            >
+              Home
+            </Link>
+            <Link 
+              to="/stats" 
+              className="transition-colors text-slate-300 hover:text-white"
+            >
+              Statistics
+            </Link>
+          </div>
+        </div>
+      </nav>
       <Outlet />
       <Toaster position="top-center" richColors />
     </QueryClientProvider>
