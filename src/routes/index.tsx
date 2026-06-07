@@ -12,9 +12,9 @@ import { Input } from "@/components/ui/input";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Al-Abdul Trust Charity Organisation — Changing Lives Through Service" },
-      { name: "description", content: "Join Al-Abdul Trust Charity Organisation in delivering food, education, healthcare and clean water across Africa. Donate or volunteer today." },
-      { property: "og:title", content: "Al-Abdul Trust Charity Organisation" },
+      { title: "Al-Abdul Trust CHARITY ORGANISATION — Changing Lives Through Service" },
+      { name: "description", content: "Join Al-Abdul Trust CHARITY ORGANISATION in delivering food, education, healthcare and clean water across Africa. Donate or volunteer today." },
+      { property: "og:title", content: "Al-Abdul Trust CHARITY ORGANISATION" },
       { property: "og:description", content: "Changing lives through service and action." },
     ],
   }),
@@ -22,10 +22,10 @@ export const Route = createFileRoute("/")({
 });
 
 const stats = [
-  { icon: Heart, label: "Children helped", value: 124500, suffix: "+" },
-  { icon: Utensils, label: "Meals distributed", value: 2300000, suffix: "+" },
-  { icon: Globe, label: "Communities reached", value: 380, suffix: "" },
-  { icon: Users, label: "Volunteers worldwide", value: 6200, suffix: "" },
+  { icon: Heart, label: "Children helped", value: 1200, suffix: "+" },
+  { icon: Utensils, label: "Meals distributed", value: 300000, suffix: "+" },
+  { icon: Globe, label: "Communities reached", value: 180, suffix: "" },
+  { icon: Users, label: "Volunteers worldwide", value: 40, suffix: "" },
 ];
 
 const testimonials = [
