@@ -8,6 +8,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Heart } from "lucide-react";
 import { useState } from "react";
+import { useServerFn } from "@tanstack/react-start";
+import { initiateDonation } from "@/lib/donations.functions";
+import { toast } from "sonner";
+import { Label } from "@/components/ui/label";
 
 export const Route = createFileRoute("/causes")({
   head: () => ({
@@ -27,6 +31,36 @@ function CausesPage() {
   const [amount, setAmount] = useState(50);
   const [recurring, setRecurring] = useState(false);
   const [currency, setCurrency] = useState("USD");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const initiate = useServerFn(initiateDonation);
+
+  async function onDonate(e: React.FormEvent) {
+    e.preventDefault();
+    if (!name.trim() || !email.trim() || !phone.trim()) {
+      toast.error("Please fill in your name, email and phone.");
+      return;
+    }
+    setSubmitting(true);
+    try {
+      const res = await initiate({
+        data: {
+          donor_name: name.trim(),
+          donor_email: email.trim(),
+          donor_phone: phone.trim(),
+          amount: Number(amount),
+          currency: currency as "USD" | "EUR" | "GBP" | "KES" | "UGX" | "NGN",
+          recurring,
+        },
+      });
+      window.location.href = res.redirect_url;
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Could not start payment");
+      setSubmitting(false);
+    }
+  }
 
   return (
     <SiteLayout>
@@ -37,6 +71,7 @@ function CausesPage() {
           {/* Donation form */}
           <aside className="lg:sticky lg:top-28 self-start">
             <Card className="p-7 shadow-[var(--shadow-elegant)]">
+              <form onSubmit={onDonate}>
               <div className="flex items-center gap-2">
                 <Heart className="h-5 w-5 text-warm fill-warm" />
                 <h3 className="font-display text-2xl font-bold text-primary">Make a donation</h3>
@@ -48,29 +83,44 @@ function CausesPage() {
               <div className="mt-5">
                 <label className="text-xs uppercase tracking-wider text-muted-foreground">Currency</label>
                 <select value={currency} onChange={(e) => setCurrency(e.target.value)} className="mt-1 w-full rounded-md border border-input bg-background px-3 py-2 text-sm">
-                  {["USD", "EUR", "GBP", "KES", "NGN"].map(c => <option key={c}>{c}</option>)}
+                  {["USD", "EUR", "GBP", "KES", "UGX", "NGN"].map(c => <option key={c}>{c}</option>)}
                 </select>
               </div>
               <div className="mt-5 grid grid-cols-4 gap-2">
                 {presets.map(p => (
-                  <button key={p} onClick={() => setAmount(p)} className={`rounded-lg border py-2 text-sm font-semibold transition ${amount === p ? "border-warm bg-warm text-white" : "border-border hover:border-warm"}`}>{p}</button>
+                  <button type="button" key={p} onClick={() => setAmount(p)} className={`rounded-lg border py-2 text-sm font-semibold transition ${amount === p ? "border-warm bg-warm text-white" : "border-border hover:border-warm"}`}>{p}</button>
                 ))}
               </div>
               <div className="mt-3">
                 <Input type="number" value={amount} onChange={(e) => setAmount(Number(e.target.value))} className="text-lg font-semibold" />
               </div>
+              <div className="mt-5 space-y-3">
+                <div>
+                  <Label htmlFor="donor-name" className="text-xs uppercase tracking-wider text-muted-foreground">Full name</Label>
+                  <Input id="donor-name" required value={name} onChange={(e) => setName(e.target.value)} placeholder="Jane Doe" autoComplete="name" />
+                </div>
+                <div>
+                  <Label htmlFor="donor-email" className="text-xs uppercase tracking-wider text-muted-foreground">Email</Label>
+                  <Input id="donor-email" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@example.com" autoComplete="email" />
+                </div>
+                <div>
+                  <Label htmlFor="donor-phone" className="text-xs uppercase tracking-wider text-muted-foreground">Phone</Label>
+                  <Input id="donor-phone" type="tel" required value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="+256 7XX XXX XXX" autoComplete="tel" />
+                </div>
+              </div>
               <p className="mt-3 text-xs text-muted-foreground">
                 {currency} {amount} {recurring ? "/ month" : ""} · provides {Math.round(amount / 5)} meals or {Math.round(amount / 25)} school days.
               </p>
-              <Button className="mt-5 w-full rounded-full h-12 text-base shadow-[var(--shadow-glow)]" style={{ background: "var(--gradient-warm)", color: "var(--warm-foreground)" }}>
-                Donate {currency} {amount}{recurring ? "/mo" : ""}
+              <Button type="submit" disabled={submitting} className="mt-5 w-full rounded-full h-12 text-base shadow-[var(--shadow-glow)]" style={{ background: "var(--gradient-warm)", color: "var(--warm-foreground)" }}>
+                {submitting ? "Redirecting to Pesapal…" : `Donate ${currency} ${amount}${recurring ? "/mo" : ""}`}
               </Button>
               <div className="mt-4 grid grid-cols-3 gap-2 text-[11px] text-center text-muted-foreground">
-                <span className="rounded border border-border py-1.5">Stripe</span>
-                <span className="rounded border border-border py-1.5">PayPal</span>
+                <span className="rounded border border-border py-1.5">Pesapal</span>
+                <span className="rounded border border-border py-1.5">Card</span>
                 <span className="rounded border border-border py-1.5">M-Pesa</span>
               </div>
               <p className="mt-3 text-[11px] text-center text-muted-foreground">Secure 256-bit SSL · Tax-deductible receipt emailed</p>
+              </form>
             </Card>
           </aside>
 
