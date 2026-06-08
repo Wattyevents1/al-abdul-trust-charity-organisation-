@@ -79,7 +79,7 @@ export const refreshDonationStatus = createServerFn({ method: "POST" })
         payment_method: (status.payment_method as string) || null,
         payment_account: (status.payment_account as string) || null,
         confirmation_code: (status.confirmation_code as string) || null,
-        raw_status: status as unknown as Record<string, unknown>,
+        raw_status: JSON.parse(JSON.stringify(status)),
         updated_at: new Date().toISOString(),
       })
       .eq("pesapal_tracking_id", data.order_tracking_id);
