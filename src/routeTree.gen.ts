@@ -18,6 +18,7 @@ import { Route as CausesRouteImport } from './routes/causes'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DonateCallbackRouteImport } from './routes/donate.callback'
 import { Route as CausesSlugRouteImport } from './routes/causes.$slug'
 import { Route as ApiPublicPesapalIpnRouteImport } from './routes/api/public/pesapal.ipn'
 
@@ -66,6 +67,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DonateCallbackRoute = DonateCallbackRouteImport.update({
+  id: '/donate/callback',
+  path: '/donate/callback',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CausesSlugRoute = CausesSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -88,6 +94,7 @@ export interface FileRoutesByFullPath {
   '/stats': typeof StatsRoute
   '/volunteer': typeof VolunteerRoute
   '/causes/$slug': typeof CausesSlugRoute
+  '/donate/callback': typeof DonateCallbackRoute
   '/api/public/pesapal/ipn': typeof ApiPublicPesapalIpnRoute
 }
 export interface FileRoutesByTo {
@@ -101,6 +108,7 @@ export interface FileRoutesByTo {
   '/stats': typeof StatsRoute
   '/volunteer': typeof VolunteerRoute
   '/causes/$slug': typeof CausesSlugRoute
+  '/donate/callback': typeof DonateCallbackRoute
   '/api/public/pesapal/ipn': typeof ApiPublicPesapalIpnRoute
 }
 export interface FileRoutesById {
@@ -115,6 +123,7 @@ export interface FileRoutesById {
   '/stats': typeof StatsRoute
   '/volunteer': typeof VolunteerRoute
   '/causes/$slug': typeof CausesSlugRoute
+  '/donate/callback': typeof DonateCallbackRoute
   '/api/public/pesapal/ipn': typeof ApiPublicPesapalIpnRoute
 }
 export interface FileRouteTypes {
@@ -130,6 +139,7 @@ export interface FileRouteTypes {
     | '/stats'
     | '/volunteer'
     | '/causes/$slug'
+    | '/donate/callback'
     | '/api/public/pesapal/ipn'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -143,6 +153,7 @@ export interface FileRouteTypes {
     | '/stats'
     | '/volunteer'
     | '/causes/$slug'
+    | '/donate/callback'
     | '/api/public/pesapal/ipn'
   id:
     | '__root__'
@@ -156,6 +167,7 @@ export interface FileRouteTypes {
     | '/stats'
     | '/volunteer'
     | '/causes/$slug'
+    | '/donate/callback'
     | '/api/public/pesapal/ipn'
   fileRoutesById: FileRoutesById
 }
@@ -169,6 +181,7 @@ export interface RootRouteChildren {
   GalleryRoute: typeof GalleryRoute
   StatsRoute: typeof StatsRoute
   VolunteerRoute: typeof VolunteerRoute
+  DonateCallbackRoute: typeof DonateCallbackRoute
   ApiPublicPesapalIpnRoute: typeof ApiPublicPesapalIpnRoute
 }
 
@@ -237,6 +250,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/donate/callback': {
+      id: '/donate/callback'
+      path: '/donate/callback'
+      fullPath: '/donate/callback'
+      preLoaderRoute: typeof DonateCallbackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/causes/$slug': {
       id: '/causes/$slug'
       path: '/$slug'
@@ -275,6 +295,7 @@ const rootRouteChildren: RootRouteChildren = {
   GalleryRoute: GalleryRoute,
   StatsRoute: StatsRoute,
   VolunteerRoute: VolunteerRoute,
+  DonateCallbackRoute: DonateCallbackRoute,
   ApiPublicPesapalIpnRoute: ApiPublicPesapalIpnRoute,
 }
 export const routeTree = rootRouteImport
