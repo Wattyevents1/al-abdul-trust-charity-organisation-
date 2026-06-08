@@ -19,6 +19,7 @@ import { Route as BlogRouteImport } from './routes/blog'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CausesSlugRouteImport } from './routes/causes.$slug'
+import { Route as ApiPublicPesapalIpnRouteImport } from './routes/api/public/pesapal.ipn'
 
 const VolunteerRoute = VolunteerRouteImport.update({
   id: '/volunteer',
@@ -70,6 +71,11 @@ const CausesSlugRoute = CausesSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => CausesRoute,
 } as any)
+const ApiPublicPesapalIpnRoute = ApiPublicPesapalIpnRouteImport.update({
+  id: '/api/public/pesapal/ipn',
+  path: '/api/public/pesapal/ipn',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -82,6 +88,7 @@ export interface FileRoutesByFullPath {
   '/stats': typeof StatsRoute
   '/volunteer': typeof VolunteerRoute
   '/causes/$slug': typeof CausesSlugRoute
+  '/api/public/pesapal/ipn': typeof ApiPublicPesapalIpnRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -94,6 +101,7 @@ export interface FileRoutesByTo {
   '/stats': typeof StatsRoute
   '/volunteer': typeof VolunteerRoute
   '/causes/$slug': typeof CausesSlugRoute
+  '/api/public/pesapal/ipn': typeof ApiPublicPesapalIpnRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -107,6 +115,7 @@ export interface FileRoutesById {
   '/stats': typeof StatsRoute
   '/volunteer': typeof VolunteerRoute
   '/causes/$slug': typeof CausesSlugRoute
+  '/api/public/pesapal/ipn': typeof ApiPublicPesapalIpnRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -121,6 +130,7 @@ export interface FileRouteTypes {
     | '/stats'
     | '/volunteer'
     | '/causes/$slug'
+    | '/api/public/pesapal/ipn'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -133,6 +143,7 @@ export interface FileRouteTypes {
     | '/stats'
     | '/volunteer'
     | '/causes/$slug'
+    | '/api/public/pesapal/ipn'
   id:
     | '__root__'
     | '/'
@@ -145,6 +156,7 @@ export interface FileRouteTypes {
     | '/stats'
     | '/volunteer'
     | '/causes/$slug'
+    | '/api/public/pesapal/ipn'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -157,6 +169,7 @@ export interface RootRouteChildren {
   GalleryRoute: typeof GalleryRoute
   StatsRoute: typeof StatsRoute
   VolunteerRoute: typeof VolunteerRoute
+  ApiPublicPesapalIpnRoute: typeof ApiPublicPesapalIpnRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -231,6 +244,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CausesSlugRouteImport
       parentRoute: typeof CausesRoute
     }
+    '/api/public/pesapal/ipn': {
+      id: '/api/public/pesapal/ipn'
+      path: '/api/public/pesapal/ipn'
+      fullPath: '/api/public/pesapal/ipn'
+      preLoaderRoute: typeof ApiPublicPesapalIpnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -255,7 +275,18 @@ const rootRouteChildren: RootRouteChildren = {
   GalleryRoute: GalleryRoute,
   StatsRoute: StatsRoute,
   VolunteerRoute: VolunteerRoute,
+  ApiPublicPesapalIpnRoute: ApiPublicPesapalIpnRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
