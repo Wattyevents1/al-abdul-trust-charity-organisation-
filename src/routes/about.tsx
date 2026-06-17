@@ -32,9 +32,9 @@ const team = [
 ];
 
 const milestones = [
-  { year: "2009", title: "Foundation born", text: "Started with a single school feeding program in Lagos." },
-  { year: "2013", title: "First clinic", text: "Opened our first mobile health clinic in rural Kenya." },
-  { year: "2017", title: "100 villages", text: "Reached 100 communities across 6 African countries." },
+  { year: "2009", title: "Foundation born", text: "Started with a single school feeding program in Kampala, Uganda." },
+  { year: "2013", title: "First clinic", text: "Opened our first mobile health clinic in rural Uganda." },
+  { year: "2017", title: "100 villages", text: "Reached 100 communities across Uganda and neighboring regions." },
   { year: "2021", title: "Clean water scale", text: "Built 250 wells, serving over 800,000 people." },
   { year: "2025", title: "Global movement", text: "40+ volunteers worldwide, $40M+ raised for impact." },
 ];
