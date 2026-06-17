@@ -1,4 +1,4 @@
-import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
+import { createFileRoute, Link, useRouter, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { SiteLayout } from "@/components/site/SiteLayout";
@@ -41,6 +41,8 @@ function CallbackPage() {
   const refresh = useServerFn(refreshDonationStatus);
   const [status, setStatus] = useState<string>("PENDING");
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+  const [secondsLeft, setSecondsLeft] = useState(5);
 
   useEffect(() => {
     let cancelled = false;
@@ -61,6 +63,17 @@ function CallbackPage() {
     run();
     return () => { cancelled = true; };
   }, [OrderTrackingId, refresh]);
+
+  useEffect(() => {
+    if (loading) return;
+    if (status === "PENDING") return;
+    if (secondsLeft <= 0) {
+      navigate({ to: "/" });
+      return;
+    }
+    const t = setTimeout(() => setSecondsLeft((s) => s - 1), 1000);
+    return () => clearTimeout(t);
+  }, [loading, status, secondsLeft, navigate]);
 
   const isComplete = status === "COMPLETED";
   const isFailed = status === "FAILED" || status === "INVALID";
@@ -88,9 +101,14 @@ function CallbackPage() {
                 Reference: <code className="font-mono">{OrderMerchantReference}</code>
               </p>
             )}
+            {!loading && status !== "PENDING" && (
+              <p className="mt-4 text-xs text-muted-foreground">
+                Redirecting to home in {secondsLeft}s…
+              </p>
+            )}
             <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <Button asChild className="rounded-full"><Link to="/causes">Back to projects</Link></Button>
-              <Button asChild variant="outline" className="rounded-full"><Link to="/">Go home</Link></Button>
+              <Button asChild className="rounded-full"><Link to="/">Go home now</Link></Button>
+              <Button asChild variant="outline" className="rounded-full"><Link to="/causes">Back to projects</Link></Button>
             </div>
           </Card>
         </div>
