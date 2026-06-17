@@ -49,7 +49,7 @@ function About() {
           <div>
             <h2 className="text-4xl font-bold text-primary">From a single meal to a movement</h2>
             <p className="mt-4 text-muted-foreground leading-relaxed">
-              Al-Abdul Trust CHARITY ORGANISATION began with one mother handing out meals after school in a Lagos suburb. Five years later we operate in 2 countries — but our principle hasn't changed: meet people where they are, with what they need, and treat them like family.
+              Al-Abdul Trust CHARITY ORGANISATION began with one mother handing out meals after school in a Kampala suburb. Five years later we operate in 2 countries — but our principle hasn't changed: meet people where they are, with what they need, and treat them like family.
             </p>
             <p className="mt-4 text-muted-foreground leading-relaxed">
               We focus on six pillars: food security, education, healthcare, clean water, women's empowerment, and emergency relief. Every dollar is tracked. Every program is co-designed with the communities we serve.
