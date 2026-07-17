@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VolunteerRouteImport } from './routes/volunteer'
 import { Route as StatsRouteImport } from './routes/stats'
+import { Route as LegalRouteImport } from './routes/legal'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as EventsRouteImport } from './routes/events'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -32,6 +33,11 @@ const VolunteerRoute = VolunteerRouteImport.update({
 const StatsRoute = StatsRouteImport.update({
   id: '/stats',
   path: '/stats',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalRoute = LegalRouteImport.update({
+  id: '/legal',
+  path: '/legal',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GalleryRoute = GalleryRouteImport.update({
@@ -105,6 +111,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/events': typeof EventsRoute
   '/gallery': typeof GalleryRoute
+  '/legal': typeof LegalRoute
   '/stats': typeof StatsRoute
   '/volunteer': typeof VolunteerRoute
   '/causes/$slug': typeof CausesSlugRoute
@@ -121,6 +128,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/events': typeof EventsRoute
   '/gallery': typeof GalleryRoute
+  '/legal': typeof LegalRoute
   '/stats': typeof StatsRoute
   '/volunteer': typeof VolunteerRoute
   '/causes/$slug': typeof CausesSlugRoute
@@ -138,6 +146,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/events': typeof EventsRoute
   '/gallery': typeof GalleryRoute
+  '/legal': typeof LegalRoute
   '/stats': typeof StatsRoute
   '/volunteer': typeof VolunteerRoute
   '/causes/$slug': typeof CausesSlugRoute
@@ -156,6 +165,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/events'
     | '/gallery'
+    | '/legal'
     | '/stats'
     | '/volunteer'
     | '/causes/$slug'
@@ -172,6 +182,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/events'
     | '/gallery'
+    | '/legal'
     | '/stats'
     | '/volunteer'
     | '/causes/$slug'
@@ -188,6 +199,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/events'
     | '/gallery'
+    | '/legal'
     | '/stats'
     | '/volunteer'
     | '/causes/$slug'
@@ -205,6 +217,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   EventsRoute: typeof EventsRoute
   GalleryRoute: typeof GalleryRoute
+  LegalRoute: typeof LegalRoute
   StatsRoute: typeof StatsRoute
   VolunteerRoute: typeof VolunteerRoute
   DonateCallbackRoute: typeof DonateCallbackRoute
@@ -225,6 +238,13 @@ declare module '@tanstack/react-router' {
       path: '/stats'
       fullPath: '/stats'
       preLoaderRoute: typeof StatsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal': {
+      id: '/legal'
+      path: '/legal'
+      fullPath: '/legal'
+      preLoaderRoute: typeof LegalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gallery': {
@@ -335,6 +355,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   EventsRoute: EventsRoute,
   GalleryRoute: GalleryRoute,
+  LegalRoute: LegalRoute,
   StatsRoute: StatsRoute,
   VolunteerRoute: VolunteerRoute,
   DonateCallbackRoute: DonateCallbackRoute,
@@ -343,3 +364,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

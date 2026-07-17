@@ -13,6 +13,7 @@ const nav = [
   { to: "/blog", label: "Blog" },
   { to: "/gallery", label: "Gallery" },
   { to: "/contact", label: "Contact" },
+  { to: "/legal", label: "Legal" },
 ] as const;
 
 export function Header() {
